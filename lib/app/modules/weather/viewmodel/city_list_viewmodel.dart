@@ -1,0 +1,62 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:weather_app/app/modules/weather/model/city_weather_model.dart';
+import 'package:weather_app/app/modules/weather/repository/open_weather_repository.dart';
+import 'package:weather_app/app/shared/service/snackbar_service.dart';
+
+class CityListViewModel extends ChangeNotifier {
+  CityListViewModel() {
+    initData();
+  }
+
+  bool? loading = false;
+  List<CityWeatherModel> cities = [];
+  String? cityName;
+  IOpenWeatherRepository api = OpenWeatherRepositoryHttp(Client());
+
+  Future<void> initData() async {
+    loading = true;
+    notifyListeners();
+    await addCity('Brisbane,AU');
+    await addCity('Melbourne,AU');
+    await addCity('Sydney,AU');
+    loading = false;
+    notifyListeners();
+    Timer.periodic(Duration(minutes: 1), (timer) async {
+      refreshCities();
+    });
+  }
+
+  addCity(String searchString) async {
+    if (cities.any((element) =>
+        element.name!.toUpperCase().contains(searchString.toUpperCase()))) {
+      return;
+    }
+    loading = true;
+    notifyListeners();
+    try {
+      cities.add(await api.getWeatherByCityName(searchString));
+    } catch (e) {
+      showSnack('Error adding city: ${e.toString()}');
+    }
+    loading = false;
+    notifyListeners();
+  }
+
+  refreshCities() async {
+    log('refreshing');
+    loading = true;
+    notifyListeners();
+    var _cities = <CityWeatherModel>[];
+    for (var city in cities) {
+      _cities.add(
+          await api.getWeatherByCityName('${city.name},${city.sys?.country}'));
+    }
+    cities = _cities;
+    loading = false;
+    notifyListeners();
+  }
+}

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/app/modules/weather/viewmodel/city_list_viewmodel.dart';
 
+import 'city_detail_view.dart';
+
 class CityListView extends StatelessWidget {
   CityListView({Key? key}) : super(key: key);
 
@@ -14,7 +16,13 @@ class CityListView extends StatelessWidget {
                   : ListView.builder(
                       itemCount: value.cities.length,
                       itemBuilder: (context, index) => ListTile(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          CityDetailView(id: index)));
+                            },
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

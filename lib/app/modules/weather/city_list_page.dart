@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/app/modules/weather/view/city_search_view.dart';
 
 import 'view/city_list_view.dart';
 
@@ -14,6 +15,7 @@ class CityListPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          CitySearchView(),
           CityListView(),
         ],
       ),

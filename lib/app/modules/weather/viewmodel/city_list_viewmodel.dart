@@ -15,7 +15,7 @@ class CityListViewModel extends ChangeNotifier {
   bool? loading = false;
   List<CityWeatherModel> cities = [];
   String? cityName;
-  IOpenWeatherRepository api = OpenWeatherRepositoryHttp(Client());
+  IOpenWeatherRepository _api = OpenWeatherRepositoryHttp(Client());
 
   Future<void> initData() async {
     loading = true;
@@ -38,7 +38,7 @@ class CityListViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
     try {
-      cities.add(await api.getWeatherByCityName(searchString));
+      cities.add(await _api.getWeatherByCityName(searchString));
     } catch (e) {
       showSnack('Error adding city: ${e.toString()}');
     }
@@ -53,7 +53,7 @@ class CityListViewModel extends ChangeNotifier {
     var _cities = <CityWeatherModel>[];
     for (var city in cities) {
       _cities.add(
-          await api.getWeatherByCityName('${city.name},${city.sys?.country}'));
+          await _api.getWeatherByCityName('${city.name},${city.sys?.country}'));
     }
     cities = _cities;
     loading = false;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/app/modules/weather/viewmodel/city_search_view_model.dart';
+import 'package:weather_app/app/modules/weather/viewmodel/city_search_viewmodel.dart';
 
 class CitySearchView extends StatefulWidget {
   @override

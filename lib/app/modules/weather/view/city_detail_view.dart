@@ -12,7 +12,7 @@ class CityDetailView extends StatefulWidget {
 
 class _CityDetailViewState extends State<CityDetailView> {
   late bool isInitState = true;
-  final appBar = AppBar();
+  final appBar = AppBar(title: Text('City Weather details'));
   @override
   void initState() {
     Future.delayed(Duration(milliseconds: 500), () {

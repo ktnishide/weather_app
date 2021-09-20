@@ -14,7 +14,6 @@ class CityListViewModel extends ChangeNotifier {
 
   bool? loading = false;
   List<CityWeatherModel> cities = [];
-  String? cityName;
   IOpenWeatherRepository _api = OpenWeatherRepositoryHttp(Client());
 
   Future<void> initData() async {
@@ -33,12 +32,17 @@ class CityListViewModel extends ChangeNotifier {
   addCity(String searchString) async {
     if (cities.any((element) =>
         element.name!.toUpperCase().contains(searchString.toUpperCase()))) {
+      showSnack('City already in the list');
       return;
     }
     loading = true;
     notifyListeners();
     try {
-      cities.add(await _api.getWeatherByCityName(searchString));
+      final city = await _api.getWeatherByCityName(searchString);
+      if (cities.any((element) => element.id == city.id)) {
+        throw Exception('City already in the list');
+      }
+      cities.add(city);
     } catch (e) {
       showSnack('Error adding city: ${e.toString()}');
     }

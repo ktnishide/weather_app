@@ -30,12 +30,6 @@ Using `FLUTTER`, `MVVM`, `PROVIDER`, `CHANGE NOTIFIER`, `OPEN WEATHER API`:
 > - Weather should be automatically updated periodically.
 > - Please commit your code as you proceed with appropriate messages.
 > 
-> ### Extra
-> This could help for the algorithm part:
-> https://codility.com/media/train/13-CaterpillarMethod.pdf > , although a purely naive
-> implementation is fine too (performance is not a > consideration for the purpose of this
-> exercise).
-> 
 > ### Brownie Points:
 > - MVVM architectural pattern is preferred with unit tests.
 > - Use an activity indicator to provide some feedback to the user while > waiting for
@@ -54,13 +48,12 @@ Using `FLUTTER`, `MVVM`, `PROVIDER`, `CHANGE NOTIFIER`, `OPEN WEATHER API`:
 > file.
 
 
-
 ## Questions/Assumptions/Decisions
 1 - I left a TODO to implement a secure method to get/change the API Keys;
 
 2 - I usually count on some support from a prototype, drawings, wireframes, UI/UX designer, etc, but there's nothing included, therefore, I'm using the basic Material components without customization;
 
-3 - I used provider/change notifier as state management but it is easy to replace by another such as BLOC, MOBX, Redux, etc..., which depends mainly on the preference/knowledge of the team and what is already being used, imho;
+3 - I used provider/change notifier as state management but as I tryied to follow SOLID and clean code/architecture principles, I think it is easy to replace by another such as BLOC, MOBX, Redux, etc..., which depends mainly on the preference/knowledge of the team and what is already being used, imho;
 
 4 - I wrote the method for searching by location, however, I could not infere the expected behaviour cause there are many ways of doing so...
 My question is whether I should have used gps to get the current user location or if it is expected to input the location or suggest while typing or something else...

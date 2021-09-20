@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:weather_app/dev_constants.dart';
+
 import '../model/city_weather_model.dart';
 
 abstract class IOpenWeatherRepository {
@@ -10,8 +12,8 @@ abstract class IOpenWeatherRepository {
 class OpenWeatherRepositoryHttp extends IOpenWeatherRepository {
   OpenWeatherRepositoryHttp(this.httpClient);
   static const endPointUrl = 'https://api.openweathermap.org/data/2.5';
-  static const apiKey =
-      "<insert api_id here>"; // TODO: get it in a more secure way (remote config, pass vault, etc...)
+  static const apiKey = DevConstants
+      .kApiKey; //"<insert api_id here>"; // TODO: get it in a more secure way (remote config, pass vault, etc...)
   final httpClient;
 
   @override

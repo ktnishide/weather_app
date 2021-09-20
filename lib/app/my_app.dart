@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'modules/home.dart';
 import 'modules/weather/viewmodel/city_list_viewmodel.dart';
+import 'modules/weather/viewmodel/city_search_view_model.dart';
 import 'shared/service/snackbar_service.dart';
 
 class MyApp extends StatelessWidget {
@@ -10,6 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
+          ChangeNotifierProvider<CitySearchViewModel>(
+              create: (_) => CitySearchViewModel()),
           ChangeNotifierProvider<CityListViewModel>(
               create: (context) => CityListViewModel())
         ],

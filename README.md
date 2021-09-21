@@ -53,7 +53,7 @@ Using `FLUTTER`, `MVVM`, `PROVIDER`, `CHANGE NOTIFIER`, `OPEN WEATHER API`:
 
 2 - I usually count on some support from a prototype, drawings, wireframes, UI/UX designer, etc, but there's nothing included, therefore, I'm using the basic Material components without customization;
 
-3 - I used provider/change notifier as state management but as I tryied to follow SOLID and clean code/architecture principles, I think it is easy to replace by another such as BLOC, MOBX, Redux, etc..., which depends mainly on the preference/knowledge of the team and what is already being used, imho;
+3 - I used provider/change notifier as state management but as I tried to follow SOLID and clean code/architecture principles, I think it is easy to replace by another such as BLOC, MOBX, Redux, etc..., which depends mainly on the preference/knowledge of the team and what is already being used, imho;
 
 4 - I wrote the method for searching by location, however, I could not infere the expected behaviour cause there are many ways of doing so...
 My question is whether I should have used gps to get the current user location or if it is expected to input the location or suggest while typing or something else...
@@ -62,3 +62,7 @@ My question is whether I should have used gps to get the current user location o
 
 6 - I lost track of time/commits so I am redoing the commits in a more logical order... but basically I wrote everything tonight.
 As I compromised with Callum to send something today, I did it in a rush cause I am late already =( I am so sorry about it.
+
+## Screenshot
+
+![screenshot](recording.gif)
